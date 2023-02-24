@@ -1,14 +1,11 @@
 print("loaded rgpt")
 function Read_file()
     local current_path = vim.api.nvim_buf_get_name(0)
-    local handle = io.popen(string.format("rgpt --input \"$(git diff %s)\"", current_path))
-    if handle == nil then
-       print("The output is not right")
-       os.exit(1)
+    local command = string.format("rgpt --input \"$(git diff %s)\"", current_path)
+    local output = vim.fn.system(command)
+    if string.match(output, "Input flag is empty") then
+        print("The current file has no git diff")
+        return
     end
-    local result = handle:read("*a")
-    handle:close()
-    print(result)
+    print(output)
 end
-
-
