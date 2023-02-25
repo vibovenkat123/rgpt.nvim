@@ -1,5 +1,15 @@
-print("loaded rgpt")
-function Read_file()
+function Main(args)
+    arg = args["args"]
+    if arg == "review" then
+        Start_Reviewing()
+    elseif arg == "" then
+        print("No arguments")
+    else
+        print(arg, "is not a valid argument")
+    end
+end
+
+function Start_Reviewing()
     local current_path = vim.api.nvim_buf_get_name(0)
     local command = string.format("rgpt --input \"$(git diff %s)\"", current_path)
     local output = vim.fn.system(command)
@@ -27,3 +37,13 @@ function Write_File(output)
         os.exit(1)
     end
 end
+local completions = {
+    "review"
+}
+Opts = {
+    nargs = 1,
+    complete = function()
+        return completions
+    end
+}
+return {main = Main, opts=Opts}
