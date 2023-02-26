@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/vibovenkat123/rgpt-vscode/main/assets/logo/shrinked_logo.png" />
+  <img src="https://raw.githubusercontent.com/vibovenkat123/review-gpt/main/assets/logo/logo.png" width="200"/>
   <h1 align="center"> Review-GPT Neovim </h1>
 </h3>
 
@@ -33,8 +33,14 @@ use "vibovenkat123/rgpt.nvim"
 
 > Usage
 
+## Example:
+
+![Example of the usage](/assets/examples/usage/usage.png)
+
 In a file, do:
 
-`:ReviewGPT review`
+```vim
+:ReviewGPT review
+```
 
 You can set keymaps for it too.
