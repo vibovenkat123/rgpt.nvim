@@ -1,49 +1,24 @@
-function Main(args)
+local start_rgpt = require("rgpt.start_rgpt")
+local config = require("rgpt.setup")
+local M = {}
+function M.main(args)
     arg = args["args"]
     if arg == "review" then
-        Start_Reviewing()
+        start_rgpt.start_reviewing(config._config)
     elseif arg == "" then
         print("No arguments")
     else
         print(arg, "is not a valid argument")
     end
 end
-
-function Start_Reviewing()
-    local current_path = vim.api.nvim_buf_get_name(0)
-    local command = string.format("rgpt --input \"$(git diff %s)\"", current_path)
-    local output = vim.fn.system(command)
-    if string.match(output, "Input flag is empty") then
-        print("The current file has no git diff")
-        return
-    end
-    local filename = Write_File(output)
-    vim.cmd('vsplit')
-    local win = vim.api.nvim_get_current_win()
-    local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_win_set_buf(win, buf)
-    vim.cmd("edit " .. filename)
-    os.remove(filename)
-end
-function Write_File(output)
-    local file = io.open("/tmp/rgpt-output", "w+")
-    if file ~= nil then
-        io.output(file)
-        io.write(output)
-        io.close(file)
-        return "/tmp/rgpt-output"
-    else
-        print("Error writing file")
-        os.exit(1)
-    end
-end
+M.setup = config.setup
 local completions = {
     "review"
 }
-Opts = {
+M.opts = {
     nargs = 1,
     complete = function()
         return completions
     end
 }
-return {main = Main, opts=Opts}
+return M
