@@ -47,6 +47,7 @@ require("rgpt").setup({
     best_of = 1,
 })
 ```
+All fields are optional
 
 # Example:
 
