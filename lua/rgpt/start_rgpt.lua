@@ -1,3 +1,4 @@
+local json = require("rgpt.json")
 local M = {}
 function M.start_reviewing(config)
     local model = config.model or "text-davinci-003"
