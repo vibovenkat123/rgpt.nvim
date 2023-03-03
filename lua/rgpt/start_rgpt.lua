@@ -14,6 +14,9 @@ function M.start_reviewing(config)
     if string.match(output, "Input flag is empty") then
         print("The current file has no git diff")
         return
+    elseif string.match(output, "error") then
+        local jsonData = json.decode(output)
+        output = string.format("Message: %s, Error: %s", jsonData.message, jsonData.error)
     end
     local filename = M.write_file(output)
     vim.cmd('vsplit')
