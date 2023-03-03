@@ -17,6 +17,8 @@ function M.start_reviewing(config)
     elseif string.match(output, "error") then
         local jsonData = json.decode(output)
         output = string.format("Message: %s, Error: %s", jsonData.message, jsonData.error)
+    elseif string.match(output, "command not found") then
+        output = "Please install the review-gpt CLI before using rgpt.nvim"
     end
     local filename = M.write_file(output)
     vim.cmd('vsplit')
