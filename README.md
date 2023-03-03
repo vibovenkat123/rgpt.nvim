@@ -63,4 +63,4 @@ You can set keymaps for it too.
 
 # Credits
 
-[json.lua](https://github.com/rxi/json.lua/blob/master/LICENSE) for parsing JSON
+[json.lua](https://github.com/rxi/json.lua) for parsing JSON
