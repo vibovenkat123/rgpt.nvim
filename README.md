@@ -60,3 +60,7 @@ In a file, do:
 ```
 
 You can set keymaps for it too.
+
+# Credits
+
+[json.lua](https://github.com/rxi/json.lua/blob/master/LICENSE) for parsing JSON
