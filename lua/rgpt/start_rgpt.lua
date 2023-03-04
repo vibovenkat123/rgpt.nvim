@@ -9,7 +9,7 @@ function M.start_reviewing(config)
     local presence_pen = config.presence_penalty or 0.3
     local best_of = config.best_of or 1
     local current_path = vim.api.nvim_buf_get_name(0)
-    local command = string.format("rgpt --input \"$(git diff %s)\" --model \"%s\" --max %s --temp %s --topp %s --freq %s --pres %s --best %s --pretty=false", current_path, model, max_tokens, temp, top_p, frequence_pen, presence_pen, best_of)
+    local command = string.format("rgpt --input \"$(git diff %s)\" --model \"%s\" --max %s --temp %s --topp %s --freq %s --pres %s --best %s --json", current_path, model, max_tokens, temp, top_p, frequence_pen, presence_pen, best_of)
     local output = vim.fn.system(command)
     if string.match(output, "Input flag is empty") then
         print("The current file has no git diff")
