@@ -1,7 +1,7 @@
 local json = require("rgpt.json")
 local M = {}
 function M.start_reviewing(config)
-    local model = config.model or "gpt-3.5-turbo"
+    local model = config.model or "turbo"
     local max_tokens = config.max_tokens or 500
     local temp = config.temperature or 0.2
     local top_p = config.top_p or 1
