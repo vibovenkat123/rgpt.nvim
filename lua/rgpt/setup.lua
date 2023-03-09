@@ -7,7 +7,7 @@ end
 -- example:
 --[[
 M.setup({
-    model = "text-davinci-003",
+    model = "turbo",
     max_tokens = 200,
     temperature = 0.2,
     top_p = 1,
